@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello, User! Welcom to Sound_CatchActivity!</string>
+    <string name="aboutapp">This application can capture audio from your microphone
+         and determine if you are whistling in it :)</string>
+    <string name="first_button">Let`s try it!</string>
+    <string name="explanetion">Push the button and look what`s happend</string>
+    
+    <string name="rec">Start</string>
+    <string name="stop">Stop</string>
+    
+         
+    <string name="app_name">Sound_Catch</string>
+
+</resources>
