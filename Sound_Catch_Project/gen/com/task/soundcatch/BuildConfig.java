@@ -1,5 +1,5 @@
 /** Automatically generated file. DO NOT MODIFY */
-package my.pack;
+package com.task.soundcatch;
 
 public final class BuildConfig {
     public final static boolean DEBUG = true;

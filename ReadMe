@@ -6,3 +6,8 @@ Insert some exception for prevent crushing.
 23.05.2012   ::   21:28
 
 Found the reason of mistake. It was permissions for sdcard. Fixed, but app still does not work(on VM). 
+
+24.05.2012   ::   19:45
+
+Now record part of app worked correctly except for the numerous experiments.
+Change name of package. Change mode of creation file (now it `is temporary and independent for path of storage).

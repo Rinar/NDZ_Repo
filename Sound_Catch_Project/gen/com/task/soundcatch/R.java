@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package my.pack;
+package com.task.soundcatch;
 
 public final class R {
     public static final class attr {

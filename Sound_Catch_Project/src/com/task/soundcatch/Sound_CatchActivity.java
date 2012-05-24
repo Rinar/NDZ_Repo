@@ -1,4 +1,6 @@
-package my.pack;
+package com.task.soundcatch;
+
+import com.task.soundcatch.R;
 
 import android.app.Activity;
 import android.content.Intent;

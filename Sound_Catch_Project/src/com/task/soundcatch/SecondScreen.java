@@ -1,7 +1,10 @@
-package my.pack;
+package com.task.soundcatch;
 
 import java.io.File;
 import java.io.IOException;
+
+import com.task.soundcatch.R;
+
 
 import android.app.Activity;
 import android.media.MediaRecorder;
@@ -15,7 +18,7 @@ public class SecondScreen extends Activity {
 	/** Called when the activity is first created. */
 	MediaRecorder recorder = new MediaRecorder();
 	File sound;
-
+	File sampleDir = Environment.getExternalStorageDirectory();
 	/*
 	 * public void comparatorOfSound(File file) {
 	 * 
@@ -38,32 +41,45 @@ public class SecondScreen extends Activity {
 		recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
 		recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
 		recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
-		recorder.setOutputFile("/sdcard/temp.3gp");
+		// recorder.setOutputFile("/sdcard/temp.3gp");
+		
+		
 		final View recButton = findViewById(R.id.rec);
 		final View stopButton = findViewById(R.id.stop);
 		stopButton.setEnabled(false);
+		
 		recButton.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 				try {
-				stopButton.setEnabled(true);
-				recButton.setEnabled(false);
-							
+					stopButton.setEnabled(true);
+					recButton.setEnabled(false);
+					if (sound == null) {
+		
 
-				recorder.prepare(); // CAN NOT TO PREPARE!!!
-				
-				
-				
-				
+						try {
+							sound = File.createTempFile("temp", ".3gp",
+									sampleDir);
+						} catch (IOException e) {
+							getTextOnScreen("Can't create temp file, because "
+									+ e.getMessage(), R.id.textView1);
+							return;
+						}
+					}
+					recorder.setOutputFile(sound.getAbsolutePath()); // TODO - find better solution
+					
+					recorder.prepare();
 					recorder.start(); // Recording is now started
-					getTextOnScreen("I`m listning...", R.id.textView1);}
-				 catch (Exception ex) {
+					getTextOnScreen("I`m listning...", R.id.textView1);
+				} catch (Exception ex) {
 					stopButton.setEnabled(false);
 					recButton.setEnabled(true);
-					getTextOnScreen("Something going wrong just now  " + ex.getMessage(), R.id.textView1);
+					getTextOnScreen("Can't start rec, because " + ex.getMessage(),
+							R.id.textView1);
 				}
 			}
 		});
+		
 		stopButton.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -71,12 +87,15 @@ public class SecondScreen extends Activity {
 				recButton.setEnabled(true);
 				try {
 					recorder.stop();
+					getTextOnScreen("Record has been stopped", R.id.textView1);
 				} catch (Exception ex) {
-					getTextOnScreen("Something going wrong" + ex.getMessage(), R.id.textView1);
+					getTextOnScreen("Can't stop rec, because " + ex.getMessage(),
+							R.id.textView1);
 				}
 
 				recorder.release(); // Now the object cannot be reused
 				// comparatorOfSound();
+				sound.delete();
 			}
 		});
 	}
