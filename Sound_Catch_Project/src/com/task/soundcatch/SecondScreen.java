@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import com.task.soundcatch.R;
 
+import com.task.soundcatch.FastFourierTransform;
 
 import android.app.Activity;
 import android.media.MediaRecorder;
@@ -19,16 +20,13 @@ public class SecondScreen extends Activity {
 	MediaRecorder recorder = new MediaRecorder();
 	File sound;
 	File sampleDir = Environment.getExternalStorageDirectory();
-	/*
-	 * public void comparatorOfSound(File file) {
-	 * 
-	 * if (String.valueOf("sound")== whistle) { Vibrator v = (Vibrator)
-	 * getSystemService(Context.VIBRATOR_SERVICE); v.vibrate(300, 3);
-	 * 
-	 * } return;
-	 * 
-	 * }
-	 */
+
+	/*public void comparatorOfSound(float inputSound[]) {
+		FastFourierTransform fft = new FastFourierTransform();
+		float spectrum[] = fft.fftMag(inputSound);
+		return;
+	  
+	  }*/
 
 	public void getTextOnScreen(String text, int id) {
 		TextView textOnScreen = (TextView) findViewById(id);
@@ -42,12 +40,11 @@ public class SecondScreen extends Activity {
 		recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
 		recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
 		// recorder.setOutputFile("/sdcard/temp.3gp");
-		
-		
+
 		final View recButton = findViewById(R.id.rec);
 		final View stopButton = findViewById(R.id.stop);
 		stopButton.setEnabled(false);
-		
+
 		recButton.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -55,7 +52,6 @@ public class SecondScreen extends Activity {
 					stopButton.setEnabled(true);
 					recButton.setEnabled(false);
 					if (sound == null) {
-		
 
 						try {
 							sound = File.createTempFile("temp", ".3gp",
@@ -66,20 +62,24 @@ public class SecondScreen extends Activity {
 							return;
 						}
 					}
-					recorder.setOutputFile(sound.getAbsolutePath()); // TODO - find better solution
-					
+					recorder.setOutputFile(sound.getAbsolutePath()); // TODO -
+																		// find
+																		// better
+																		// solution
+
 					recorder.prepare();
 					recorder.start(); // Recording is now started
 					getTextOnScreen("I`m listning...", R.id.textView1);
 				} catch (Exception ex) {
 					stopButton.setEnabled(false);
 					recButton.setEnabled(true);
-					getTextOnScreen("Can't start rec, because " + ex.getMessage(),
+					getTextOnScreen(
+							"Can't start rec, because " + ex.getMessage(),
 							R.id.textView1);
 				}
 			}
 		});
-		
+
 		stopButton.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -89,12 +89,12 @@ public class SecondScreen extends Activity {
 					recorder.stop();
 					getTextOnScreen("Record has been stopped", R.id.textView1);
 				} catch (Exception ex) {
-					getTextOnScreen("Can't stop rec, because " + ex.getMessage(),
+					getTextOnScreen(
+							"Can't stop rec, because " + ex.getMessage(),
 							R.id.textView1);
 				}
-
 				recorder.release(); // Now the object cannot be reused
-				// comparatorOfSound();
+				//comparatorOfSound(SOMTHING); //TODO - develop, how create "float[]" from "File" 
 				sound.delete();
 			}
 		});

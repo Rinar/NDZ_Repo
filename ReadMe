@@ -11,3 +11,8 @@ Found the reason of mistake. It was permissions for sdcard. Fixed, but app still
 
 Now record part of app worked correctly except for the numerous experiments.
 Change name of package. Change mode of creation file (now it `is temporary and independent for path of storage).
+
+29.05.2012   ::   23:10
+
+Tried to work with creation file. Have idea to change way of capture... Streaming audio seems to be better solution for this task (Maybe).
+Add class for FFT from http://linguistics.tklee.org/Projects/dsp/fft.html. All rights reserved and belong to their creators :)
