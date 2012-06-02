@@ -21,11 +21,21 @@ public class SecondScreen extends Activity {
 	File sound;
 	File sampleDir = Environment.getExternalStorageDirectory();
 
-	/*public void comparatorOfSound(float inputSound[]) {
+ /*	public void comparatorOfSound_1(File sound) {
+		float[] trans = new float[(int) sound.length()];
 		FastFourierTransform fft = new FastFourierTransform();
-		float spectrum[] = fft.fftMag(inputSound);
-		return;
-	  
+		float spectrum[] = fft.fftMag(trans);
+		getTextOnScreen(String.valueOf(spectrum), R.id.textView1);
+		
+		  
+	  }
+	public void comparatorOfSound_2(File sound) {
+		double[] trans = new double[(int) sound.length()];
+		RealDoubleFFT fft = new RealDoubleFFT((int) sound.length());
+		fft.ft(trans);
+		getTextOnScreen((fft.toString()), R.id.textView1);
+		
+		  
 	  }*/
 
 	public void getTextOnScreen(String text, int id) {
@@ -94,7 +104,14 @@ public class SecondScreen extends Activity {
 							R.id.textView1);
 				}
 				recorder.release(); // Now the object cannot be reused
-				//comparatorOfSound(SOMTHING); //TODO - develop, how create "float[]" from "File" 
+				try{
+				//comparatorOfSound_1(sound);
+					}
+				catch(Exception ex) {
+					getTextOnScreen(
+							"Can't comp, because " + ex.getMessage(),
+							R.id.textView1);
+				}
 				sound.delete();
 			}
 		});

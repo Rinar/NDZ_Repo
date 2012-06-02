@@ -16,3 +16,9 @@ Change name of package. Change mode of creation file (now it `is temporary and i
 
 Tried to work with creation file. Have idea to change way of capture... Streaming audio seems to be better solution for this task (Maybe).
 Add class for FFT from http://linguistics.tklee.org/Projects/dsp/fft.html. All rights reserved and belong to their creators :)
+
+02.06.2012   ::   18:12
+
+Have worked with this fft-class. Met with "null-exception" during running FFT. (however keep it in listing)
+Included new FFT-class from that used in Audalyzer app (from  http://projects.javatic.net/p/chordroid/source/tree/634d5381bdca4d4c4f3d63f7f501c9f20df4c4fb/src/ca/uol/aig/fftpack)
+Have problem with using him in my app. Still have wanting to change way of capturing, but not shure why...
