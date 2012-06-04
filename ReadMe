@@ -22,3 +22,11 @@ Add class for FFT from http://linguistics.tklee.org/Projects/dsp/fft.html. All r
 Have worked with this fft-class. Met with "null-exception" during running FFT. (however keep it in listing)
 Included new FFT-class from that used in Audalyzer app (from  http://projects.javatic.net/p/chordroid/source/tree/634d5381bdca4d4c4f3d63f7f501c9f20df4c4fb/src/ca/uol/aig/fftpack)
 Have problem with using him in my app. Still have wanting to change way of capturing, but not shure why...
+
+04.06.2012   ::   23:14
+
+Total re-building!
+Now capture makes streaming. Do not know how it will help to finish project, but with this way there is no need to work with files and storages.
+Problem for the numerous experiments solved. 
+Still need find way for resolution FFT...
+P.S. Previously version for capture was saved
